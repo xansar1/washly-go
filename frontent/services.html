@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Washly Go</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #111;
+      color: #ffae00;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffae00;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffae00;
+      margin-bottom: 25px;
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 12px;
+      padding: 25px 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: #ffae00;
+      background: #222;
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(255, 174, 0, 0.4);
+    }
+
+    .service-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 12px;
+    }
+
+    .service-card h3 {
+      margin: 10px 0 8px;
+      color: #ffae00;
+      font-size: 18px;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    @media(max-width: 768px) {
+      .service-list {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+      .service-card img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧺 Washly Go</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="order.html">Book</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="service-list">
+      <div class="service-card">
+        <img src="images/wash_fold.png" alt="Wash & Fold">
+        <h3>Wash & Fold</h3>
+        <p>Everyday laundry cleaned and neatly folded.</p>
+      </div>
+      <div class="service-card">
+        <img src="images/wash_iron.png" alt="Wash & Iron">
+        <h3>Wash & Iron</h3>
+        <p>Freshly washed clothes with perfect ironing.</p>
+      </div>
+      <div class="service-card">
+        <img src="images/dry_cleaning.png" alt="Dry Cleaning">
+        <h3>Dry Cleaning</h3>
+        <p>Premium dry cleaning for delicate fabrics.</p>
+      </div>
+      <div class="service-card">
+        <img src="images/sofa_cleaning.png" alt="Sofa Cleaning">
+        <h3>Sofa & Upholstery</h3>
+        <p>Deep cleaning for sofas and upholstery.</p>
+      </div>
+      <div class="service-card">
+        <img src="images/carpet_cleaning.png" alt="Carpet Cleaning">
+        <h3>Carpet Cleaning</h3>
+        <p>Professional carpet and rug cleaning services.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

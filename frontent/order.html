@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Laundry Pickup | Washly Go</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #111;
+      color: #ffae00;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffae00;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffae00;
+      margin-bottom: 20px;
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .service-card {
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .service-card:hover,
+    .service-card.selected {
+      border-color: #ffae00;
+      background: #222;
+    }
+
+    .service-card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    .service-card h3 {
+      margin: 10px 0 5px;
+      color: #ffae00;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    form {
+      background: #111;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(255,255,255,0.05);
+    }
+
+    input, textarea, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      font-size: 14px;
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #888;
+    }
+
+    button {
+      background: #ffae00;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffc233;
+    }
+
+    #successMsg {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #4caf50;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧺 Washly Go</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="order.html" class="active">Book</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Select a Service</h2>
+    <div class="service-list" id="serviceList">
+      <div class="service-card" data-service="wash_fold">
+        <img src="images/wash_fold.png" alt="Wash & Fold">
+        <h3>Wash & Fold</h3>
+        <p>Everyday laundry cleaned & neatly folded.</p>
+      </div>
+      <div class="service-card" data-service="wash_iron">
+        <img src="images/wash_iron.png" alt="Wash & Iron">
+        <h3>Wash & Iron</h3>
+        <p>Freshly washed clothes with perfect ironing.</p>
+      </div>
+      <div class="service-card" data-service="dry_cleaning">
+        <img src="images/dry_cleaning.png" alt="Dry Cleaning">
+        <h3>Dry Cleaning</h3>
+        <p>Premium dry cleaning for delicate fabrics.</p>
+      </div>
+      <div class="service-card" data-service="sofa_cleaning">
+        <img src="images/sofa_cleaning.png" alt="Sofa Cleaning">
+        <h3>Sofa & Upholstery</h3>
+        <p>Deep cleaning for sofas and upholstery.</p>
+      </div>
+      <div class="service-card" data-service="carpet_cleaning">
+        <img src="images/carpet_cleaning.png" alt="Carpet Cleaning">
+        <h3>Carpet Cleaning</h3>
+        <p>Professional carpet and rug cleaning.</p>
+      </div>
+    </div>
+
+    <form id="pickupForm">
+      <input type="hidden" name="service" id="selectedService">
+
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="text" name="address" placeholder="Pickup Address" required>
+      <input type="date" name="date" required>
+      <input type="time" name="time" required>
+      <textarea name="notes" placeholder="Special Instructions"></textarea>
+
+      <button type="submit">Book Pickup</button>
+    </form>
+    <p id="successMsg" style="display:none;">✅ Booking submitted!</p>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.service-card');
+    const selectedService = document.getElementById('selectedService');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedService.value = card.dataset.service;
+      });
+    });
+
+    const form = document.getElementById('pickupForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      if (!selectedService.value) {
+        alert("Please select a service first!");
+        return;
+      }
+
+      const orderData = Object.fromEntries(new FormData(form));
+
+      try {
+        const res = await fetch("http://localhost:5000/api/orders", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(orderData)
+        });
+
+        if (res.ok) {
+          successMsg.style.display = "block";
+          form.reset();
+          selectedService.value = "";
+          cards.forEach(c => c.classList.remove('selected'));
+          setTimeout(() => (successMsg.style.display = "none"), 4000);
+        } else {
+          alert("❌ Something went wrong!");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("❌ Server error. Try later.");
+      }
+    });
+  </script>
+</body>
+</html>

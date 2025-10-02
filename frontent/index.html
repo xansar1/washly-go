@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Washly Go - Laundry & Dry Cleaning</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Base */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth; /* Smooth scroll */
+    }
+
+    /* Sticky Navbar */
+    header {
+      background: #111;
+      color: #ffae00;
+      padding: 15px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffae00;
+    }
+
+    /* Hero */
+    .hero {
+      background: url('images/your-hero.jpg') no-repeat center center/cover;
+      position: relative;
+    }
+
+    .hero-overlay {
+      background: rgba(0,0,0,0.6);
+      text-align: center;
+      padding: 100px 20px 80px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: #ffae00;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #ccc;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease 0.2s;
+    }
+
+    .hero .btn {
+      background: #ffae00;
+      color: #000;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .hero .btn:hover {
+      background: #ffc233;
+      transform: scale(1.05);
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 15px;
+    }
+
+    .feature-card {
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 12px;
+      padding: 25px 15px;
+      text-align: center;
+      transition: 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .feature-card:hover {
+      border-color: #ffae00;
+      background: #222;
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(255, 174, 0, 0.4);
+    }
+
+    .feature-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h3 {
+      margin: 10px 0 8px;
+      color: #ffae00;
+      font-size: 18px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #111;
+      color: #ffae00;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+    }
+
+    @media(max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+      .feature-card img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🧺 Washly Go</h1>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="order.html">Book</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1 class="fade-in">Fast & Reliable Laundry Pickup</h1>
+      <p class="fade-in">Clean clothes delivered to your doorstep with care and precision.</p>
+      <a href="order.html" class="btn">Book Now</a>
+      <a href="services.html" class="btn">See Services</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features container">
+    <div class="feature-card">
+      <img src="images/wash_fold.png" alt="Wash & Fold">
+      <h3>Wash & Fold</h3>
+      <p>Everyday laundry cleaned & neatly folded for your convenience.</p>
+    </div>
+    <div class="feature-card">
+      <img src="images/wash_iron.png" alt="Wash & Iron">
+      <h3>Wash & Iron</h3>
+      <p>Freshly washed clothes with perfect ironing for a crisp look.</p>
+    </div>
+    <div class="feature-card">
+      <img src="images/dry_cleaning.png" alt="Dry Cleaning">
+      <h3>Dry Cleaning</h3>
+      <p>Premium dry cleaning for delicate and luxury fabrics.</p>
+    </div>
+    <div class="feature-card">
+      <img src="images/sofa_cleaning.png" alt="Sofa Cleaning">
+      <h3>Sofa & Upholstery</h3>
+      <p>Deep cleaning for sofas and upholstery at your home.</p>
+    </div>
+    <div class="feature-card">
+      <img src="images/carpet_cleaning.png" alt="Carpet Cleaning">
+      <h3>Carpet Cleaning</h3>
+      <p>Professional carpet and rug cleaning for a fresh home.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Washly Go. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JS Animations -->
+  <script>
+    // Fade-in animation on scroll
+    const faders = document.querySelectorAll('.feature-card, .fade-in');
+
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = "translateY(0)";
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Washly Go | Admin Orders</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #111;
+      color: #ffae00;
+      padding: 15px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #111;
+      border-radius: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #222;
+      color: #ffae00;
+    }
+    tr:nth-child(even) {
+      background: #1a1a1a;
+    }
+    tr:hover {
+      background: #222;
+    }
+    #refreshBtn {
+      background: #ffae00;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
+    #refreshBtn:hover {
+      background: #ffc233;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧺 Washly Go - Admin Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <button id="refreshBtn">🔄 Refresh Orders</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody id="ordersTable">
+        <tr><td colspan="8">Loading orders...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:5000/api/orders"; // Change later when deployed
+
+    async function fetchOrders() {
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+
+        const table = document.getElementById("ordersTable");
+        table.innerHTML = "";
+
+        if (data.length === 0) {
+          table.innerHTML = "<tr><td colspan='8'>No orders yet.</td></tr>";
+          return;
+        }
+
+        data.forEach(order => {
+          const row = `
+            <tr>
+              <td>${order.service}</td>
+              <td>${order.name}</td>
+              <td>${order.phone}</td>
+              <td>${order.email}</td>
+              <td>${order.address}</td>
+              <td>${order.date}</td>
+              <td>${order.time}</td>
+              <td>${order.notes || "-"}</td>
+            </tr>
+          `;
+          table.innerHTML += row;
+        });
+      } catch (err) {
+        console.error(err);
+        document.getElementById("ordersTable").innerHTML = 
+          "<tr><td colspan='8'>❌ Failed to load orders.</td></tr>";
+      }
+    }
+
+    document.getElementById("refreshBtn").addEventListener("click", fetchOrders);
+
+    // Auto load when page opens
+    fetchOrders();
+  </script>
+</body>
+</html>
