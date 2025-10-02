@@ -215,11 +215,12 @@
       const orderData = Object.fromEntries(new FormData(form));
 
       try {
-        const res = await fetch("http://localhost:5000/api/orders", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(orderData)
-        });
+       const res = await fetch("https://washly-go.onrender.com/api/orders", {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify(orderData)
+         });
+
 
         if (res.ok) {
           successMsg.style.display = "block";
